@@ -15,7 +15,7 @@
     <tbody>
         @foreach (var contact in Model)
         {
-            <tr data-url="@Url.Action("Edit", "Contact", new { id = contact.ContactId })" onclick="rowClick(this)">
+            <tr data-url="@Url.Action("Details", "Contact", new { id = contact.ContactId })" onclick="rowClick(this)">
                 <td>
                     <div class="d-flex align-items-center">
                         <img src="@(!string.IsNullOrEmpty(contact.ProfilePhoto)

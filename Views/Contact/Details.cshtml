@@ -1,0 +1,73 @@
+﻿@model ContactManagerApp.Models.Contact
+
+@{
+    ViewBag.Title = "Contact Details";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewBag.Title</h2>
+
+    <div class="card">
+        <div class="card-header">
+            Contact Information
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">First Name:</div>
+                <div class="col-md-9">@Model.FirstName</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Last Name:</div>
+                <div class="col-md-9">@Model.LastName</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Phone Number:</div>
+                <div class="col-md-9">@Model.PhoneNumber</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Email:</div>
+                <div class="col-md-9">@Model.Email</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Category:</div>
+                <div class="col-md-9">
+                    @if (Model.Category != null)
+                    {
+                        @Model.Category.Name
+                    }
+                    else
+                    {
+                        <span>No Category</span>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3 font-weight-bold">Create Date:</div>
+                <div class="col-md-9">
+                   
+                        @Model.DateAdded.ToString("MM/dd/yyyy")
+                    
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ProfilePhoto))
+            {
+                <div class="row mb-3">
+                    <div class="col-md-3 font-weight-bold">Profile Photo:</div>
+                    <div class="col-md-9">
+                        <img src="@Model.ProfilePhoto" alt="Profile Photo" class="img-thumbnail" style="width: 150px; height: auto;" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model.ContactId" class="btn btn-primary">Edit Contact</a>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>

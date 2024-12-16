@@ -155,6 +155,19 @@ namespace ContactManagerApp.Controllers
             await _ctx.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
             }
+        [HttpGet]
+        public IActionResult Details (int id)
+            {
+            var contact = _ctx.Contacts.Find(id);
+
+            if (contact == null)
+                {
+                // If contact not found, return an error page or redirect to another action
+                return NotFound();
+                }
+
+            return View(contact);
+            }
 
         }
     }
